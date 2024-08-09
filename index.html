@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neocrypto – Верификация номера телефона</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Подключение скрипта reCAPTCHA -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <style>
+        .iframe-container {
+            width: 100%;
+            height: 600px; /* Установите высоту по вашему усмотрению */
+            border: none;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div id="root" class="container">
+        <div class="form-container">
+            <h1>Верификация номера телефона</h1>
+            <!-- Встраивание iframe -->
+            <iframe class="iframe-container" src="https://buy.neocrypto.net/enter-phone"></iframe>
+            
+            <!-- Оригинальная форма (если она все еще нужна) -->
+            <form id="phone-form" style="display:none;">
+                <input type="tel" id="phone-number" placeholder="Введите номер телефона" required>
+                <!-- Виджет reCAPTCHA -->
+                <div class="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></div>
+                <button type="button" onclick="startSession()">Отправить код</button>
+            </form>
+            <form id="verification-form" style="display:none;">
+                <input type="text" id="verification-code" placeholder="Введите код из SMS" required>
+                <button type="button" onclick="verifyPhoneNumber()">Подтвердить</button>
+            </form>
+            <div id="result"></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
